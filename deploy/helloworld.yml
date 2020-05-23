@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1 # Changed from apps/v1
-kind: Rollout # Changed from Deployment
+apiVersion: apps/v1 # Changed from argoproj.io/v1alpha1
+kind: Deployment # Changed from Rollout
 metadata:
   name: colorapi
   labels:
