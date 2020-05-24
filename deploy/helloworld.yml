@@ -1,5 +1,5 @@
-apiVersion: apps/v1 # Changed from argoproj.io/v1alpha1
-kind: Deployment # Changed from Rollout
+apiVersion: argoproj.io/v1alpha1 # Changed from apps/v1 
+kind: Rollout # Changed from Rollout
 metadata:
   name: colorapi
   labels:
@@ -23,6 +23,16 @@ spec:
         - name: web
           containerPort: 5000
 ---
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause:
+          duration: "30s"
+      - setWeight: 50
+      - pause:
+          duration: "30s"
+          
 apiVersion: v1
 kind: Service
 metadata:
