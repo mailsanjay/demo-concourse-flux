@@ -33,19 +33,4 @@ spec:
   selector:
     app: colorapi
   type: LoadBalancer
- ---
-apiVersion: argoproj.io/v1alpha1 # Changed from apps/v1 
-kind: Rollout # Changed from Rollout
-metadata:
-  name: colorapi
-  labels:
-    app: colorapi
-strategy:
-   canary:
-      steps:
-      - setWeight: 20
-      - pause:
-          duration: "30s"
-      - setWeight: 50
-      - pause:
-          duration: "30s"
+ 
